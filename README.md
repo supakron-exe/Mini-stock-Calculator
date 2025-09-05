@@ -1,1 +1,356 @@
-# Mini-stock-Calculator
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/supakron-exe/Mini-stock-Calculator/blob/main/README.md\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Prompt 2**\n",
+        "as a student in a group of 3 persons: บีม as planner, เตอร์ as coder and ออมสิน as debugger with topic:Mini Stock calculator, how to progress with week 2/sprint 2\n",
+        "# ส่วนใหม่\n",
+        "--------------------------------------------------------------------------------\n",
+        "### **บีม (Planner)**:\n",
+        "สวัสดีทุกคน, Sprint 1 เราทำได้ดีมาก โปรแกรมของเราทำงานได้ตามที่คาดหวังแล้ว สำหรับ Sprint 2 นี้ เป้าหมายหลักของเราคือการ \"เพิ่มความฉลาดในการตัดสินใจ\" ให้กับโปรแกรม โดยใช้ความรู้เรื่องเงื่อนไขที่เรียนในสัปดาห์ที่ 2 ทั้งหมดครับ\n",
+        "นี่คือแผนของเราสำหรับสัปดาห์นี้:\n",
+        "1. ปรับปรุงการแสดงผลตามเงื่อนไข (Conditional Output): ถึงแม้โค้ดเราจะมี if/elif/else อยู่แล้ว เราจะทำให้มันละเอียดขึ้น โดยอาจจะเพิ่มการแสดงข้อความที่แตกต่างกันตาม \"ขนาด\" ของกำไรหรือขาดทุน เช่น กำไรนิดหน่อย, กำไรมาก, ขาดทุนนิดหน่อย, ขาดทุนมาก นี่คือการใช้ Nested Conditionals หรือ if-elif-else ที่ซับซ้อนขึ้น\n",
+        "2. เพิ่มการตรวจสอบข้อมูลนำเข้า (Input Validation): นี่คือส่วนสำคัญที่ต้องเพิ่มเข้ามา เราจะใช้ if statement เพื่อตรวจสอบว่าข้อมูลที่ผู้ใช้ป้อนมานั้นสมเหตุสมผลหรือไม่ ก่อนที่จะนำไปคำนวณ เช่น\n",
+        "    ◦ จำนวนหุ้นต้องมากกว่า 0\n",
+        "    ◦ ราคาซื้อและราคาขายต้องไม่เป็นค่าติดลบ\n",
+        "3. เพิ่มคำแนะนำเชิงสถานการณ์ (Situational Recommendations): เราจะใช้ Logical Operators (and, or) เพื่อสร้างเงื่อนไขที่ซับซ้อนขึ้น และให้คำแนะนำที่แตกต่างกันไป เช่น\n",
+        "    ◦ if profit > 0 and percentage_change > 15: \"เป็นการลงทุนที่ยอดเยี่ยม!\"\n",
+        "    ◦ if profit < 0 and percentage_change < -20: \"ควรพิจารณาตัดขาดทุน (Cut Loss) ในครั้งต่อไป\"\n",
+        "    ◦ นี่จะทำให้โปรแกรมของเราดูเป็น \"ผู้ช่วย\" มากขึ้น เหมือนกับ Activity 2.2 ที่ให้เราออกแบบเกม \"choose your own adventure\"\n",
+        "\n",
+        "--------------------------------------------------------------------------------\n",
+        "### **เตอร์ (Coder):**\n",
+        "รับทราบตามแผนเลยบีม ในส่วนของการเขียนโค้ด เตอร์จะรับผิดชอบดังนี้:\n",
+        "\n",
+        "• ต่อยอดจากโค้ดเดิม: เตอร์จะนำโค้ดเดิมมาปรับปรุง โดยจะเพิ่มเงื่อนไขต่างๆ เข้าไปตามแผน\n",
+        "\n",
+        "• Implement Input Validation: เตอร์จะเพิ่ม if statement เข้าไปหลังจากรับค่า input() มาทันที เพื่อตรวจสอบว่า shares > 0, buy_price >= 0, และ sell_price >= 0 ถ้าเงื่อนไขไม่เป็นจริง จะพิมพ์ข้อความเตือนและจบการทำงานของโปรแกรมไปก่อน เพื่อป้องกันการคำนวณที่ผิดพลาด\n",
+        "\n",
+        "• Refactor Conditional Output: เตอร์จะแก้ไขบล็อก if-elif-else ที่มีอยู่เดิมให้เป็น Nested Conditionals ตัวอย่างเช่น:\n",
+        "\n",
+        "• ใช้ Logical Operators: เตอร์จะใช้ and เพื่อสร้างเงื่อนไขที่ซับซ้อนขึ้นสำหรับคำแนะนำพิเศษตามที่บีมวางแผนไว้\n",
+        "\n",
+        "\n",
+        "--------------------------------------------------------------------------------\n",
+        "### **ออมสิน (Debugger):**\n",
+        "แผนดีมากเลย! ในฐานะ Debugger สัปดาห์นี้ออมสินจะเน้นการ \"ไล่โค้ดและทดสอบตามเงื่อนไข\" (Trace Execution) ซึ่งตรงกับ Activity 2.1 ของสัปดาห์นี้เลย เราต้องแน่ใจว่าโปรแกรมของเราทำงานถูกต้องในทุกเส้นทาง (path) ที่เงื่อนไขพาไป\n",
+        "นี่คือ Test Cases สำหรับ Sprint 2:\n",
+        "1. กรณีปกติ (Happy Paths):\n",
+        "    ◦ กำไรมาก: buy_price=100, sell_price=120, shares=10 -> ผลที่คาดหวัง: โปรแกรมควรแสดงข้อความกำไร และข้อความพิเศษสำหรับกำไรที่สูง (เช่น \"Excellent investment...\")\n",
+        "    ◦ กำไรน้อย: buy_price=100, sell_price=102, shares=10 -> ผลที่คาดหวัง: โปรแกรมควรแสดงข้อความกำไร แต่เป็นข้อความทั่วไป\n",
+        "    ◦ ขาดทุน: buy_price=100, sell_price=90, shares=10 -> ผลที่คาดหวัง: โปรแกรมแสดงข้อความขาดทุน\n",
+        "2. กรณีพิเศษ (Edge Cases):\n",
+        "    ◦ เท่าทุน: buy_price=100, sell_price=100, shares=10 -> ผลที่คาดหวัง: โปรแกรมต้องแสดงข้อความ \"เท่าทุน\" ได้อย่างถูกต้อง\n",
+        "    ◦ ราคาซื้อเป็นศูนย์: buy_price=0, sell_price=10, shares=10 -> ผลที่คาดหวัง: โปรแกรมควรคำนวณและจัดการได้อย่างถูกต้องโดยไม่เกิดข้อผิดพลาด (โค้ดเดิมจัดการได้แล้ว)\n",
+        "3. กรณีข้อมูลนำเข้าไม่ถูกต้อง (Invalid Input - ทดสอบฟีเจอร์ใหม่):\n",
+        "    ◦ จำนวนหุ้นเป็นศูนย์: shares=0 -> ผลที่คาดหวัง: โปรแกรมควรแจ้งเตือน \"Number of shares must be greater than 0.\" และหยุดทำงาน\n",
+        "    ◦ ราคาซื้อติดลบ: buy_price=-50 -> ผลที่คาดหวัง: โปรแกรมควรแจ้งเตือน \"Price cannot be negative.\" และหยุดทำงาน\n",
+        "หมายเหตุ: โค้ดเดิมมีการใช้ try-except ValueError ซึ่งเป็นการจัดการ Error Handling ที่จะเรียนในสัปดาห์ที่ 7 ถือว่าทำได้ดีมากและล้ำหน้าไปก่อนแล้ว! แต่ในสัปดาห์นี้เราจะเน้นไปที่การใช้ if statement เพื่อดักจับ \"ตรรกะที่ผิดพลาด\" (เช่น ค่าติดลบ) ก่อนที่มันจะกลายเป็น Error ครับ\n",
+        "\n",
+        "--------------------------------------------------------------------------------\n",
+        "บีม (Planner): สรุป Action Items\n",
+        "เยี่ยมมากทุกคน งั้นสรุปแผนสำหรับ Sprint 2 ของเรานะ:\n",
+        "\n",
+        "• เตอร์ (Coder): แก้ไขโค้ดเดิมเพื่อเพิ่ม if statement สำหรับ Input Validation และปรับปรุง if-elif-else block ให้เป็น Nested Conditionals ตามตัวอย่าง\n",
+        "\n",
+        "• ออมสิน (Debugger): เตรียมข้อมูลและรันโปรแกรมด้วย Test Cases ทั้งหมดที่วางแผนไว้ เพื่อให้แน่ใจว่า Logic การตัดสินใจของเราครอบคลุมทุกกรณี\n",
+        "\n",
+        "• บีม (Planner): อัปเดตไฟล์ README.md เพื่ออธิบายฟีเจอร์ใหม่ (Input Validation และ Conditional Recommendations) ที่เพิ่มเข้ามาใน Sprint 2"
+      ],
+      "metadata": {
+        "id": "ko8zlns3ay6Y"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **✅ โค้ดที่เสร็จในสัปดาห์นี้**"
+      ],
+      "metadata": {
+        "id": "hyUTUnlK0zxZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_profit_loss(buy_price: float, sell_price: float, shares: int) -> float:\n",
+        "    return (sell_price - buy_price) * shares\n",
+        "\n",
+        "def calculate_percentage_change(buy_price: float, sell_price: float) -> float:\n",
+        "    if buy_price == 0:\n",
+        "        return 0.0\n",
+        "    return ((sell_price - buy_price) / buy_price) * 100\n",
+        "\n",
+        "def main():\n",
+        "    print(\"Welcome to Mini Stock Calculator!\")\n",
+        "\n",
+        "    while True:\n",
+        "        buy_price = float(input(\"Enter the buy price per share: \"))\n",
+        "        if buy_price < 0:\n",
+        "            print(\"Buy price cannot be negative.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    while True:\n",
+        "        sell_price = float(input(\"Enter the sell price per share: \"))\n",
+        "        if sell_price < 0:\n",
+        "            print(\"Sell price cannot be negative.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    while True:\n",
+        "        shares = int(input(\"Enter the number of shares: \"))\n",
+        "        if shares <= 0:\n",
+        "            print(\"Number of shares must be greater than 0.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    profit_loss = calculate_profit_loss(buy_price, sell_price, shares)\n",
+        "    percentage_change = calculate_percentage_change(buy_price, sell_price)\n",
+        "\n",
+        "    print(f\"\\n--- Results ---\")\n",
+        "    print(f\"Total Profit/Loss: {profit_loss:.2f} USD\")\n",
+        "    print(f\"Percentage Change: {percentage_change:.2f}%\")\n",
+        "\n",
+        "    if profit_loss > 0 and percentage_change > 15:\n",
+        "        print(\"It's a great investment!\")\n",
+        "    elif profit_loss > 0 and percentage_change <15:\n",
+        "        print(\"It's a good investment!\")\n",
+        "    elif profit_loss == 0 and percentage_change == 0:\n",
+        "        print(\"It's a neutral investment.\")\n",
+        "    elif profit_loss < 0 and percentage_change > -20:\n",
+        "        print(\"You should consider cutting your losses next time.\")\n",
+        "    else:\n",
+        "        print(\"Wow, more than -20%? At this rate, you’re not investing—you’re donating to the market.\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Iq4s346103BM",
+        "outputId": "6b9b0a83-caaf-47b2-d954-e3bb8ec31286"
+      },
+      "execution_count": 45,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 250\n",
+            "Enter the sell price per share: 150\n",
+            "Enter the number of shares: 3\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: -300.00 USD\n",
+            "Percentage Change: -40.00%\n",
+            "Wow, more than -20%? At this rate, you’re not investing—you’re donating to the market.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **📂 Test case :**\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "ZDiS7erAtPkA"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_profit_loss(buy_price: float, sell_price: float, shares: int) -> float:\n",
+        "    return (sell_price - buy_price) * shares\n",
+        "\n",
+        "def calculate_percentage_change(buy_price: float, sell_price: float) -> float:\n",
+        "    if buy_price == 0:\n",
+        "        return 0.0\n",
+        "    return ((sell_price - buy_price) / buy_price) * 100\n",
+        "\n",
+        "def main():\n",
+        "  while True:\n",
+        "    print(\"Welcome to Mini Stock Calculator!\")\n",
+        "\n",
+        "    while True:\n",
+        "        buy_price = float(input(\"Enter the buy price per share: \"))\n",
+        "        if buy_price < 0:\n",
+        "            print(\"Buy price cannot be negative.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    while True:\n",
+        "        sell_price = float(input(\"Enter the sell price per share: \"))\n",
+        "        if sell_price < 0:\n",
+        "            print(\"Sell price cannot be negative.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    while True:\n",
+        "        shares = int(input(\"Enter the number of shares: \"))\n",
+        "        if shares <= 0:\n",
+        "            print(\"Number of shares must be greater than 0.\")\n",
+        "        else:\n",
+        "            break\n",
+        "\n",
+        "    profit_loss = calculate_profit_loss(buy_price, sell_price, shares)\n",
+        "    percentage_change = calculate_percentage_change(buy_price, sell_price)\n",
+        "\n",
+        "    print(f\"\\n--- Results ---\")\n",
+        "    print(f\"Total Profit/Loss: {profit_loss:.2f} USD\")\n",
+        "    print(f\"Percentage Change: {percentage_change:.2f}%\")\n",
+        "\n",
+        "    if profit_loss > 0 and percentage_change > 15:\n",
+        "        print(\"It's a great investment!\")\n",
+        "    elif profit_loss > 0 and percentage_change <15:\n",
+        "        print(\"It's a good investment!\")\n",
+        "    elif profit_loss == 0 and percentage_change == 0:\n",
+        "        print(\"It's a neutral investment.\")\n",
+        "    elif profit_loss < 0 and percentage_change > -20:\n",
+        "        print(\"You should consider cutting your losses next time.\")\n",
+        "    else:\n",
+        "        print(\"Wow, more than -20%? At this rate, you’re not investing—you’re donating to the market.\")\n",
+        "    cont = input(\"Do you want to try again? (y/n): \").lower()\n",
+        "    print(\"\\n\")\n",
+        "    if cont != 'y':\n",
+        "        print(\"Program ended.\")\n",
+        "        break\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0M5lSY-5bBGC",
+        "outputId": "eb31aa26-e780-412c-8e1f-12dac3c2d10e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 100\n",
+            "Enter the sell price per share: 120\n",
+            "Enter the number of shares: 10\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: 200.00 USD\n",
+            "Percentage Change: 20.00%\n",
+            "It's a great investment!\n",
+            "Do you want to try again? (y/n): y\n",
+            "\n",
+            "\n",
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 102\n",
+            "Enter the sell price per share: 104\n",
+            "Enter the number of shares: 10\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: 20.00 USD\n",
+            "Percentage Change: 1.96%\n",
+            "It's a good investment!\n",
+            "Do you want to try again? (y/n): y\n",
+            "\n",
+            "\n",
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 100\n",
+            "Enter the sell price per share: 90\n",
+            "Enter the number of shares: 10\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: -100.00 USD\n",
+            "Percentage Change: -10.00%\n",
+            "You should consider cutting your losses next time.\n",
+            "Do you want to try again? (y/n): y\n",
+            "\n",
+            "\n",
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 100\n",
+            "Enter the sell price per share: 100\n",
+            "Enter the number of shares: 10\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: 0.00 USD\n",
+            "Percentage Change: 0.00%\n",
+            "It's a neutral investment.\n",
+            "Do you want to try again? (y/n): y\n",
+            "\n",
+            "\n",
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 0\n",
+            "Enter the sell price per share: 10\n",
+            "Enter the number of shares: 10\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: 100.00 USD\n",
+            "Percentage Change: 0.00%\n",
+            "It's a good investment!\n",
+            "Do you want to try again? (y/n): y\n",
+            "\n",
+            "\n",
+            "Welcome to Mini Stock Calculator!\n",
+            "Enter the buy price per share: 10\n",
+            "Enter the sell price per share: -10\n",
+            "Sell price cannot be negative.\n",
+            "Enter the sell price per share: 10\n",
+            "Enter the number of shares: 0\n",
+            "Number of shares must be greater than 0.\n",
+            "Enter the number of shares: 0\n",
+            "Number of shares must be greater than 0.\n",
+            "Enter the number of shares: 1\n",
+            "\n",
+            "--- Results ---\n",
+            "Total Profit/Loss: 0.00 USD\n",
+            "Percentage Change: 0.00%\n",
+            "It's a neutral investment.\n",
+            "Do you want to try again? (y/n): n\n",
+            "\n",
+            "\n",
+            "Program ended.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **💡Github : [Mini Stock Calculator](https://github.com/aarktik/Mini-stock-Calculator#)**"
+      ],
+      "metadata": {
+        "id": "XEtrCkBjtmGv"
+      }
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
